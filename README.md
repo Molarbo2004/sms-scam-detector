@@ -2,6 +2,14 @@
 
 End-to-end ML-сервис, который определяет, является ли SMS-сообщение мошенническим (скам/спам) или обычным. Проект включает полный цикл: от обучения модели с учетом дисбаланса классов до упаковки в Docker и деплоя в облако.
 
+```markdown
+![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)
+![Flask](https://img.shields.io/badge/Flask-API-lightgrey.svg)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)
+![Render](https://img.shields.io/badge/Deploy-Render-brightgreen.svg)
+```
+
 ## 📖 О проекте
 Фишинг и мошенничество в SMS — огромная проблема. Пользователи часто получают сообщения вроде *«Ваш аккаунт заблокирован, подтвердите данные»* и теряют деньги. Этот сервис работает как **система триажа**: он классифицирует текст и возвращает вероятность того, что это мошенничество.
 
@@ -29,13 +37,13 @@ End-to-end ML-сервис, который определяет, являетс�
 
 *Сравнение:* «Глупая» модель, которая всегда говорит «Нормально», имеет Accuracy 86.6%, но **Recall 0%**. Accuracy здесь бесполезен, поэтому были выбраны PR-AUC и Recall.
 
-## 🧪 Примеры работы модели
+## 🧪 Примеры работы модели (Запуск predict_test.py)
 
 | Входной текст | Ответ API | Интерпретация |
 | :--- | :--- | :--- |
 | `"URGENT! You have won a 1 week FREE membership. Call now!"` | `{"is_scam": true, "probability": 0.9936}` | ✅ **Скам** (модель уверена на 99%) |
 | `"Hey, are we still meeting for lunch tomorrow?"` | `{"is_scam": false, "probability": 0.0702}` | ✅ **Норм** (модель уверена на 93%) |
-| `"Your account has been suspended. Verify your details immediately."` | `{"is_scam": true, "probability": 0.6979}` | ✅ **Скам** (фишинг, порог 0.4 сработал) |
+| `"Your account has been suspended. Verify your details immediately."` | `{"is_scam": true, "probability": 0.6979}` | ✅ **Скам** |
 | `"Can you send me the report by 5pm?"` | `{"is_scam": false, "probability": 0.1285}` | ✅ **Норм** (рабочее СМС) |
 
 ## 🛠 Технологии
@@ -99,7 +107,7 @@ docker run -it -p 9696:9696 spam-detector
 ```
 Вы увидите в терминале логи Gunicorn: Listening at: http://0.0.0.0:9696.
 
-### Шаг 4: Запустите контейнер
+### Шаг 4: Протестируйте сервис
 Не закрывая первый терминал (где работает контейнер), откройте второй терминал и отправьте запрос:
 Проверка "жив ли сервис" (GET)
 ```bash
@@ -110,7 +118,10 @@ curl http://localhost:9696/health
 ```bash
 curl -X POST http://localhost:9696/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won a free prize!\"}"
 ```
-Ответ: {"is_scam": true, "probability": (0.#####)}
+Ответ: {"is_scam": true, "probability": (0.9599)}
+
+<img width="448" height="190" alt="image" src="https://github.com/user-attachments/assets/9e984e5d-0863-46bc-bd63-5d19b9eb3738" />
+
 
 ## 📂 Структура проекта
 
@@ -123,7 +134,5 @@ sms-scam-detector/
 ├── train.py                 # Скрипт обучения модели (EDA + обучение)
 ├── predict.py               # Flask-сервис (API)
 ├── predict-test.py          # Скрипт для локального тестирования API
-├── model_spam.bin           # Обученная модель (Pickle: Vectorizer + Model)
-└── assets/                  # Скриншоты и медиа для README
+└── model_spam.bin           # Обученная модель (Pickle: Vectorizer + Model)
 ```
-
