@@ -116,7 +116,7 @@ curl http://localhost:9696/health
 ```bash
 curl -X POST http://localhost:9696/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won a free prize!\"}"
 ```
-Ответ: {"is_scam": true, "probability": (0.9599)}
+Ответ: {"is_scam": true, "probability": 0.9599}
 
 <img width="448" height="190" alt="image" src="https://github.com/user-attachments/assets/9e984e5d-0863-46bc-bd63-5d19b9eb3738" />
 
