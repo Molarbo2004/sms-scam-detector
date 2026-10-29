@@ -112,4 +112,18 @@ curl -X POST http://localhost:9696/check -H "Content-Type: application/json" -d 
 ```
 Ответ: {"is_scam": true, "probability": (0.#####)}
 
+## 📂 Структура проекта
+
+```text
+sms-scam-detector/
+├── .gitignore               # Исключения для Git (venv, __pycache__)
+├── Dockerfile               # Рецепт сборки Docker-образа
+├── README.md                # Документация проекта
+├── requirements.txt         # Python-зависимости
+├── train.py                 # Скрипт обучения модели (EDA + обучение)
+├── predict.py               # Flask-сервис (API)
+├── predict-test.py          # Скрипт для локального тестирования API
+├── model_spam.bin           # Обученная модель (Pickle: Vectorizer + Model)
+└── assets/                  # Скриншоты и медиа для README
+```
 
