@@ -63,3 +63,5 @@ graph TD
     Flask -->|JSON Response| Gunicorn
     Gunicorn -->|HTTP 200 OK| Client
 ```
+
+## 🗺 Этапы разработки (Project Roadmap)
