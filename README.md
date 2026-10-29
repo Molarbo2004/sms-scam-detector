@@ -1,10 +1,10 @@
 # 📱 Детектор Скам-сообщений и Спама (API)
 
-![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
-![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)
-![Flask](https://img.shields.io/badge/Flask-API-lightgrey.svg)
-![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)
-![Render](https://img.shields.io/badge/Deploy-Render-brightgreen.svg)
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-orange?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-API-lightgrey?style=for-the-badge&logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue?style=for-the-badge&logo=docker&logoColor=white)
+![Render](https://img.shields.io/badge/Deploy-Render-brightgreen?style=for-the-badge&logo=render&logoColor=white)
 
 End-to-end ML-сервис, который определяет, является ли SMS-сообщение мошенническим (скам/спам) или обычным. Проект включает полный цикл: от обучения модели с учетом дисбаланса классов до упаковки в Docker и деплоя в облако.
 
