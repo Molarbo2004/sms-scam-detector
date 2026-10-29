@@ -1,0 +1,19 @@
+# Виртуальное окружение
+.venv/
+venv/
+
+# Кэш Python
+__pycache__/
+*.pyc
+
+# Данные и лишние файлы 
+# SMSSpamCollection
+# *.tar
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Настройки IDE
+.vscode/
+.idea/
