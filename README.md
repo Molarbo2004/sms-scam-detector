@@ -62,3 +62,4 @@ graph TD
     Decision -->|5. jsonify| Flask
     Flask -->|JSON Response| Gunicorn
     Gunicorn -->|HTTP 200 OK| Client
+```
