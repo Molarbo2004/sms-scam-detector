@@ -47,3 +47,18 @@ curl -X GET https://sms-scam-detector-jj8y.onrender.com/health
 ```bash
 curl -X POST https://sms-scam-detector-jj8y.onrender.com/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won!\"}"
 ```
+
+## 🏗 Архитектура сервиса
+
+```mermaid
+graph TD
+    Client([Клиент: Browser / curl / predict_test.py]) -->|POST /check JSON| Render[Render Cloud / Балансировщик]
+    Render -->|HTTP| Gunicorn[Gunicorn WSGI Server]
+    Gunicorn -->|WSGI| Flask[Flask App: predict.py]
+    Flask -->|1. get_json| Clean[Очистка текста]
+    Clean -->|2. TF-IDF| Vectorizer[DictVectorizer]
+    Vectorizer -->|3. predict_proba| Model[Logistic Regression]
+    Model -->|4. Порог 0.4| Decision[Решение: Скам / Норм]
+    Decision -->|5. jsonify| Flask
+    Flask -->|JSON Response| Gunicorn
+    Gunicorn -->|HTTP 200 OK| Client
