@@ -42,3 +42,10 @@ End-to-end ML-сервис, который определяет, являетс�
 ### 1. Проверка работоспособности (GET)
 ```bash
 curl -X GET https://sms-scam-detector-jj8y.onrender.com/health
+```
+### 2. Проверка работы сервиса (POST)
+```bash
+curl -X POST https://sms-scam-detector-jj8y.onrender.com/check \
+     -H "Content-Type: application/json" \
+     -d "{\"text\": \"URGENT! You won!\"}"
+```
