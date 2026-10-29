@@ -10,7 +10,7 @@ End-to-end ML-сервис, который определяет, являетс�
 
 ## 📊 Данные и Бизнес-задача
 * **Датасет:** SMS Spam Collection (5 572 сообщения).
-* **Проблема:** Сильный **дисбаланс классов**. Только **13.4%** сообщений — это спам (747 из 4825), остальные 86.6% — нормальные.
+* **Проблема:** Сильный **дисбаланс классов**. Только **13.4%** сообщений — это спам (747 из 5572), остальные 86.6% — нормальные.
 * **Бизнес-цель:** Для детектора мошенничества **False Negative (пропустить скам) гораздо дороже, чем False Positive (заблокировать обычное СМС)**. Поэтому модель должна максимизировать **Recall**.
 
 ## 🧠 Подход к машинному обучению
@@ -45,7 +45,5 @@ curl -X GET https://sms-scam-detector-jj8y.onrender.com/health
 ```
 ### 2. Проверка работы сервиса (POST)
 ```bash
-curl -X POST https://sms-scam-detector-jj8y.onrender.com/check \
-     -H "Content-Type: application/json" \
-     -d "{\"text\": \"URGENT! You won!\"}"
+curl -X POST https://sms-scam-detector-jj8y.onrender.com/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won!\"}"
 ```
