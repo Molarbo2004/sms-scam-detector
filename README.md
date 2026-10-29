@@ -48,6 +48,10 @@ curl -X GET https://sms-scam-detector-jj8y.onrender.com/health
 curl -X POST https://sms-scam-detector-jj8y.onrender.com/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won!\"}"
 ```
 
+Пример запроса в Postman: 
+
+<img width="1431" height="652" alt="image" src="https://github.com/user-attachments/assets/2f0b868e-1f95-48a3-9dd9-16b7f50d74e1" />
+
 ## 🏗 Архитектура сервиса
 
 ```mermaid
