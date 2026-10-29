@@ -68,4 +68,39 @@ graph TD
     Gunicorn -->|HTTP 200 OK| Client
 ```
 
-## 🗺 Этапы разработки (Project Roadmap)
+## 🚀 Как запустить и протестировать локально
+
+Если вы хотите запустить сервис на своем компьютере, вам понадобится только **Docker**. Устанавливать Python и библиотеки вручную не нужно — всё уже упаковано в контейнер.
+
+### Шаг 1: Клонируйте репозиторий
+Откройте терминал (или командную строку) и выполните:
+```bash
+git clone https://github.com/Molarbo2004/sms-scam-detector.git
+cd sms-scam-detector
+```
+
+### Шаг 2: Соберите Docker образ
+```bash
+docker build -t spam-detector .
+```
+
+### Шаг 3: Запустите контейнер
+```bash
+docker run -it -p 9696:9696 spam-detector
+```
+Вы увидите в терминале логи Gunicorn: Listening at: http://0.0.0.0:9696.
+
+### Шаг 4: Запустите контейнер
+Не закрывая первый терминал (где работает контейнер), откройте второй терминал и отправьте запрос:
+Проверка "жив ли сервис" (GET)
+```bash
+curl http://localhost:9696/health
+```
+Ответ: {"status":"ok"}
+Отправка текста на проверку (POST)
+```bash
+curl -X POST http://localhost:9696/check -H "Content-Type: application/json" -d "{\"text\": \"URGENT! You won a free prize!\"}"
+```
+Ответ: {"is_scam": true, "probability": (0.#####)}
+
+
