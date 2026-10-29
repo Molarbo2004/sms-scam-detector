@@ -41,4 +41,4 @@ End-to-end ML-сервис, который определяет, являетс�
 
 ### 1. Проверка работоспособности (GET)
 ```bash
-curl -X GET https://ССЫЛКА_НА_RENDER.onrender.com/health
+curl -X GET https://sms-scam-detector-jj8y.onrender.com/health
